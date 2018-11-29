@@ -9,4 +9,10 @@ class Funcionario extends Model
     protected $fillable = [
         'nome', 'email', 'telefone', 'cpf', 'empresa_id'
     ];
+
+    public function empresa()
+    {
+        return $this->hasOne(\App\Models\Empresa::class, 'id');
+    }
+
 }
