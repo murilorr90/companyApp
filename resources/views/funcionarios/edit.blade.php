@@ -28,12 +28,12 @@
 
                             <div class="form-group">
                                 {{ Form::label('cpf', 'CPF') }}
-                                {{ Form::text('cpf', null, array('class' => 'form-control', 'required')) }}
+                                {{ Form::text('cpf', null, array('class' => 'form-control cpf', 'required')) }}
                             </div>
 
                             <div class="form-group">
                                 {{ Form::label('telefone', 'Telefone') }}
-                                {{ Form::text('telefone', null, array('class' => 'form-control', 'required')) }}
+                                {{ Form::text('telefone', null, array('class' => 'form-control phone', 'required')) }}
                             </div>
                             {{ Form::submit('Salvar', array('class' => 'btn btn-success')) }}
                         {{ Form::close() }}

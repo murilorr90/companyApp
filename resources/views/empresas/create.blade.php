@@ -23,11 +23,11 @@
 
                         <div class="form-group">
                             {{ Form::label('website', 'Website') }}
-                            {{ Form::text('website', null, array('class' => 'form-control', 'required')) }}
+                            {{ Form::text('website', null, array('class' => 'form-control')) }}
                         </div>
 
                         <div class="form-group">
-                            {{ Form::file('logo', null, array('class' => 'form-control', 'required')) }}
+                            {{ Form::file('logo', null, array('class' => 'form-control')) }}
                         </div>
 
                         {{ Form::submit('Salvar', array('class' => 'btn btn-success')) }}

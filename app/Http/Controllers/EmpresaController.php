@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class EmpresaController extends Controller
@@ -15,7 +16,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $data = Empresa::paginate(10);
+        $data = Empresa::orderBy('nome')->paginate(10);
 
         return view('empresas.index', ['empresas' => $data]);
     }
@@ -47,9 +48,16 @@ class EmpresaController extends Controller
         if ($validator->fails())
             return back()->with('message', $validator->errors());
 
-        $path = $request->file('logo')->store('public');
 
-        Empresa::create(array_merge($request->all(), ['logo' => $path]));
+        $filename = null;
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->logo->extension();
+            $filename = "{$name}.{$extension}";
+            $request->file('logo')->storeAs('public', $filename);
+        }
+
+        Empresa::create(array_merge($request->all(), ['logo' => $filename]));
 
         return redirect()->route('empresas.index')->with('message', 'Item adicionado com sucesso.');
     }
@@ -94,9 +102,15 @@ class EmpresaController extends Controller
         if ($validator->fails())
             return back()->with('message', $validator->errors());
 
-        $path = $request->file('logo')->store('public');
+        $filename = null;
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->logo->extension();
+            $filename = "{$name}.{$extension}";
+            $request->file('logo')->storeAs('public', $filename);
+        }
 
-        $empresa->update(array_merge($request->all(), ['logo' => $path]));
+        $empresa->update(array_merge($request->all(), ['logo' => $filename]));
 
         return redirect()->route('empresas.index')->with('message','Item atualizado com sucesso.');
     }

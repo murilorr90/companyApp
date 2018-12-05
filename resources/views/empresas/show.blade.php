@@ -9,6 +9,9 @@
                         <a href="{{ route('empresas.index') }}" class="btn btn-sm btn-danger mr-2">Voltar</a>
                         Empresas<small> - Visualizar</small></div>
                         <div class="card-body">
+                            <div class="text-center">
+                                <img src="{{ url("storage/{$empresa->logo}") }}" class="w-50">
+                            </div>
                             <p>
                                 <strong>Nome:</strong> {{ $empresa->nome }}<br>
                                 <strong>Email:</strong> {{ $empresa->email }}<br>

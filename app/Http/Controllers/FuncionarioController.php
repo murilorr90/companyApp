@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FuncionarioController extends Controller
 {
@@ -14,7 +15,7 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        $data = Funcionario::paginate(10);
+        $data = Funcionario::orderBy('nome')->paginate(10);
 
         return view('funcionarios.index', ['funcionarios' => $data]);
     }

@@ -17,6 +17,7 @@
                         <thead>
                         <tr>
                             <td>ID</td>
+                            <td>Logo</td>
                             <td>Nome</td>
                             <td>Email</td>
                             <td>Website</td>
@@ -27,6 +28,11 @@
                         @foreach($empresas as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
+                                <td style="width:100px">
+                                    @if($item->logo)
+                                        <img src="{{ url("storage/{$item->logo}") }}" class="w-100">
+                                    @endif
+                                </td>
                                 <td>{{ $item->nome }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td><a href="{{ $item->website }}" target="_blank">{{ $item->website }}</a></td>

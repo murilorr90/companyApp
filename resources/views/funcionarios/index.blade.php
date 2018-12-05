@@ -16,10 +16,10 @@
                         <thead>
                         <tr>
                             <td>ID</td>
-                            <td>Empresa</td>
                             <td>Nome</td>
                             <td>Email</td>
                             <td>CPF</td>
+                            <td>Empresa</td>
                             <td style="width:191px">Ações</td>
                         </tr>
                         </thead>
@@ -27,11 +27,10 @@
                         @foreach($funcionarios as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->empresa->nome }}</td>
                                 <td>{{ $item->nome }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->cpf }}</td>
-
+                                <td>{{ $item->empresa->nome }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-success" href="{{ route('funcionarios.show', $item->id) }}">Exibir</a>
                                     <a class="btn btn-sm btn-dark" href="{{ route('funcionarios.edit', $item->id) }}" >Editar</a>
