@@ -2,7 +2,7 @@
 
 ## Commands
 
-- git clone [https://github.com/murilorr90/controlaltweb.git](https://github.com/murilorr90/bluecoding.git)
+- git clone [https://github.com/murilorr90/companyApp.git](https://github.com/murilorr90/companyApp.git)
 - composer install
 - configure .env
 - php artisan migrate
